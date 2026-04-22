@@ -1,6 +1,6 @@
 # Paste-to-HTML Email Converter Service
 
-Use this to paste plain text and instantly generate polished HTML email with CTA button.
+Use this to paste plain text and instantly generate polished HTML email with CTA button and live preview.
 
 ## File
 
@@ -11,8 +11,9 @@ Use this to paste plain text and instantly generate polished HTML email with CTA
 1. Paste your plain text email in the big input box.
 2. Keep first line as `Subject: ...` to auto-extract subject.
 3. Set brand details, color, logo URL, website, and CTA button URL.
-4. Click `Generate HTML`.
-5. Copy the generated HTML and paste into your email sender.
+4. Optionally turn the prototype button on or off.
+5. Click `Generate HTML`.
+6. Copy the generated HTML and paste into your email sender.
 
 ## Input Format Example
 
@@ -39,6 +40,8 @@ Ahsan Malik
 - Greeting lines like `Hi Name,` are styled as a greeting.
 - Subject is separated so you can paste it directly into your mail subject field.
 - This is local and static. No server or API required.
+- The raw HTML code is not shown in the UI; only the subject and live preview are displayed.
+- The prototype button can be turned on or off from the form.
 
 ## Optional Next Upgrade
 

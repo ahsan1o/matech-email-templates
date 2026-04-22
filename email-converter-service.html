@@ -154,6 +154,23 @@
       display: none;
       white-space: pre-wrap;
     }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .toggle-row input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--brand);
+    }
+    .hidden-field {
+      display: none;
+    }
     @media (max-width: 980px) {
       .grid { grid-template-columns: 1fr; }
       .row, .row.three { grid-template-columns: 1fr; }
@@ -208,6 +225,22 @@
             </div>
           </div>
 
+          <div class="toggle-row">
+            <input id="includePrototype" type="checkbox" checked />
+            <label for="includePrototype" style="margin:0;display:inline;color:inherit;">Include prototype button</label>
+          </div>
+
+          <div class="row prototype-fields">
+            <div>
+              <label for="prototypeLabel">Prototype Button Label</label>
+              <input id="prototypeLabel" value="View Prototype" />
+            </div>
+            <div>
+              <label for="prototypeUrl">Prototype Button URL</label>
+              <input id="prototypeUrl" value="https://v0-fitness-coach-portfolio-service-blond.vercel.app/" />
+            </div>
+          </div>
+
           <label for="rawText">Paste Plain Text Email</label>
           <textarea id="rawText">Subject: Quick thought on HER Project
 
@@ -218,8 +251,6 @@ I came across your profile and was genuinely impressed by the way you blend boxi
 Why I am reaching out: when a coach is launching a new program, the biggest gap is often not the content itself, but the system around it.
 
 We build custom fitness websites and client platforms for creators who need a central hub for bookings, program delivery, and branded presentation that matches their energy.
-
-https://v0-fitness-coach-portfolio-service-blond.vercel.app/
 
 Would you be open to a quick 15-minute chat next week?
 
@@ -242,8 +273,6 @@ Founder & Creative Director, MA Technologies</textarea>
           <div><strong>Extracted Subject</strong></div>
           <div id="subjectOut" class="subject-box">(none)</div>
           <div id="errorOut" class="error-box"></div>
-          <label for="htmlOut" style="margin-top: 12px;">Generated HTML</label>
-          <textarea id="htmlOut" class="output" spellcheck="false"></textarea>
         </div>
         <iframe id="preview"></iframe>
       </section>
@@ -251,6 +280,9 @@ Founder & Creative Director, MA Technologies</textarea>
   </div>
 
   <script>
+    let latestHtml = '';
+    let latestSubject = '';
+
     function escapeHtml(text) {
       return text
         .replace(/&/g, '&amp;')
@@ -308,41 +340,54 @@ Founder & Creative Director, MA Technologies</textarea>
       errorOut.textContent = '';
 
       try {
-      const raw = document.getElementById('rawText').value;
-      const brandName = document.getElementById('brandName').value.trim() || 'Your Brand';
-      const brandTagline = document.getElementById('brandTagline').value.trim() || '';
-      const brandColor = document.getElementById('brandColor').value.trim() || '#0d9488';
-      const logoUrl = document.getElementById('logoUrl').value.trim();
-      const websiteUrl = document.getElementById('websiteUrl').value.trim() || '#';
-      const ctaLabel = document.getElementById('ctaLabel').value.trim() || 'Book a Call';
-      const ctaUrl = document.getElementById('ctaUrl').value.trim() || '#';
-      const signatureName = 'Ahsan Malik';
-      const signatureTitle = 'MA Technologies';
-      const calendarUrl = 'https://cal.com/ahsan1o?embed=true&layout=month_view&theme=light';
+        const raw = document.getElementById('rawText').value;
+        const brandName = document.getElementById('brandName').value.trim() || 'Your Brand';
+        const brandTagline = document.getElementById('brandTagline').value.trim() || '';
+        const brandColor = document.getElementById('brandColor').value.trim() || '#0d9488';
+        const logoUrl = document.getElementById('logoUrl').value.trim();
+        const websiteUrl = document.getElementById('websiteUrl').value.trim() || '#';
+        const ctaLabel = document.getElementById('ctaLabel').value.trim() || 'Book a Call';
+        const ctaUrl = document.getElementById('ctaUrl').value.trim() || '#';
+        const includePrototype = document.getElementById('includePrototype').checked;
+        const prototypeLabel = document.getElementById('prototypeLabel').value.trim() || 'View Prototype';
+        const prototypeUrl = document.getElementById('prototypeUrl').value.trim();
+        const signatureName = 'Ahsan Malik';
+        const signatureTitle = 'MA Technologies';
+        const calendarUrl = 'https://cal.com/ahsan1o?embed=true&layout=month_view&theme=light';
 
-      const parsed = parseInput(raw);
-      document.getElementById('subjectOut').textContent = parsed.subject || '(No subject detected)';
+        const parsed = parseInput(raw);
+        latestSubject = parsed.subject || '(No subject detected)';
+        document.getElementById('subjectOut').textContent = latestSubject;
 
-      const greetingIdx = parsed.paragraphs.findIndex(p => /^hi\b|^hello\b/i.test(p));
-      const signatureStart = parsed.paragraphs.findIndex((paragraph) => {
-        const firstLine = (paragraph.split('\n')[0] || '').trim();
-        return /^(best|regards|sincerely|warmly|thanks)[,.:!?\s]*$/i.test(firstLine);
-      });
-      let greetingHtml = '';
-      const bodyParts = signatureStart >= 0 ? parsed.paragraphs.slice(0, signatureStart) : [...parsed.paragraphs];
-      if (greetingIdx >= 0) {
-        greetingHtml = '<p style="font-size: 16px; font-weight: 500; color: #0f172a; margin: 0 0 15px;">' + escapeHtml(bodyParts[greetingIdx]) + '</p>';
-        bodyParts.splice(greetingIdx, 1);
-      }
-
-      const bodyHtml = bodyParts.map((paragraph) => {
-        if (/^(best|regards|sincerely|warmly|thanks)[,.!?\s]*$/i.test(paragraph.trim().split('\n')[0] || '')) {
-          return signatureToHtml(paragraph);
+        const greetingIdx = parsed.paragraphs.findIndex(p => /^hi\b|^hello\b/i.test(p));
+        const signatureStart = parsed.paragraphs.findIndex((paragraph) => {
+          const firstLine = (paragraph.split('\n')[0] || '').trim();
+          return /^(best|regards|sincerely|warmly|thanks)[,.:!?\s]*$/i.test(firstLine);
+        });
+        let greetingHtml = '';
+        const normalizedPrototypeUrl = prototypeUrl.trim().replace(/\/$/, '');
+        const bodyParts = (signatureStart >= 0 ? parsed.paragraphs.slice(0, signatureStart) : [...parsed.paragraphs]).filter((paragraph) => {
+          const normalizedParagraph = paragraph.trim().replace(/\/$/, '');
+          return !(normalizedPrototypeUrl && normalizedParagraph === normalizedPrototypeUrl);
+        });
+        if (greetingIdx >= 0) {
+          greetingHtml = '<p style="font-size: 16px; font-weight: 500; color: #0f172a; margin: 0 0 15px;">' + escapeHtml(bodyParts[greetingIdx]) + '</p>';
+          bodyParts.splice(greetingIdx, 1);
         }
-        return paragraphToHtml(paragraph);
-      }).join('\n            ');
 
-      const html = `<!DOCTYPE html>
+        const bodyHtml = bodyParts.map((paragraph) => {
+          if (/^(best|regards|sincerely|warmly|thanks)[,.!?\s]*$/i.test(paragraph.trim().split('\n')[0] || '')) {
+            return signatureToHtml(paragraph);
+          }
+          return paragraphToHtml(paragraph);
+        }).join('\n            ');
+
+        const prototypeButtonHtml = includePrototype && prototypeUrl ? `
+      <div style="text-align:center; margin: 0 0 18px;">
+        <a href="${escapeHtml(prototypeUrl)}" style="display:inline-block;background:transparent;color:${escapeHtml(brandColor)};padding:11px 32px;text-decoration:none;border:1px solid ${escapeHtml(brandColor)};border-radius:6px;font-weight:500;font-size:14px;line-height:20px;white-space:nowrap;">${escapeHtml(prototypeLabel)}</a>
+      </div>` : '';
+
+        const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -358,6 +403,7 @@ Founder & Creative Director, MA Technologies</textarea>
     <div style="padding:40px 30px;background:#ffffff;">
       ${greetingHtml}
       ${bodyHtml}
+      ${prototypeButtonHtml}
 
       <p style="font-size: 13px; color: #475569; margin: 0 0 10px; line-height: 1.7;">
         You can also check us on social media:
@@ -388,11 +434,11 @@ Founder & Creative Director, MA Technologies</textarea>
 </body>
 </html>`;
 
-  const finalHtml = html.split('{{brandColor}}').join(brandColor);
-      document.getElementById('htmlOut').value = finalHtml;
-      const iframe = document.getElementById('preview');
-      iframe.srcdoc = finalHtml;
-      return parsed.subject;
+        const finalHtml = html.split('{{brandColor}}').join(brandColor);
+        latestHtml = finalHtml;
+        const iframe = document.getElementById('preview');
+        iframe.srcdoc = finalHtml;
+        return latestSubject;
       } catch (err) {
         const message = err && err.message ? err.message : String(err);
         const fallback = 'Email generation failed. Please check your input and try again.\n\nDetails: ' + message;
@@ -418,10 +464,9 @@ Founder & Creative Director, MA Technologies</textarea>
     });
 
     document.getElementById('copyHtmlBtn').addEventListener('click', async () => {
-      const text = document.getElementById('htmlOut').value;
-      if (!text.trim()) buildEmail();
-      const ok = await copyText(document.getElementById('htmlOut').value);
-      alert(ok ? 'HTML copied.' : 'Clipboard blocked. Copy manually from output box.');
+      if (!latestHtml.trim()) buildEmail();
+      const ok = await copyText(latestHtml);
+      alert(ok ? 'HTML copied.' : 'Clipboard blocked. Copy manually from the preview generator.');
     });
 
     document.getElementById('copySubjectBtn').addEventListener('click', async () => {
@@ -430,6 +475,16 @@ Founder & Creative Director, MA Technologies</textarea>
       alert(ok ? 'Subject copied.' : 'Clipboard blocked. Copy manually from Subject box.');
     });
 
+    document.getElementById('includePrototype').addEventListener('change', () => {
+      document.querySelector('.prototype-fields').style.display = document.getElementById('includePrototype').checked ? 'grid' : 'none';
+      buildEmail();
+    });
+
+    ['rawText', 'brandName', 'brandTagline', 'brandColor', 'logoUrl', 'websiteUrl', 'ctaLabel', 'ctaUrl', 'prototypeLabel', 'prototypeUrl'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', () => buildEmail());
+    });
+
+    document.querySelector('.prototype-fields').style.display = document.getElementById('includePrototype').checked ? 'grid' : 'none';
     buildEmail();
   </script>
 </body>
