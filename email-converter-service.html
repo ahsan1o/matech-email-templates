@@ -229,6 +229,17 @@
             </div>
           </div>
 
+          <div class="row">
+            <div>
+              <label for="signatureName">Signature Name</label>
+              <input id="signatureName" value="Ahsan Malik" />
+            </div>
+            <div>
+              <label for="signatureTitle">Signature Title</label>
+              <input id="signatureTitle" value="Founder & Creative Director, MA Technologies" />
+            </div>
+          </div>
+
           <div class="toggle-row">
             <input id="includePrototype" type="checkbox" checked />
             <label for="includePrototype" style="margin:0;display:inline;color:inherit;">Include prototype button</label>
@@ -355,8 +366,8 @@ Founder & Creative Director, MA Technologies</textarea>
         const includePrototype = document.getElementById('includePrototype').checked;
         const prototypeLabel = document.getElementById('prototypeLabel').value.trim() || 'View Prototype';
         const prototypeUrl = document.getElementById('prototypeUrl').value.trim();
-        const signatureName = 'Ahsan Malik';
-        const signatureTitle = 'MA Technologies';
+        const signatureName = document.getElementById('signatureName').value.trim() || 'Ahsan Malik';
+        const signatureTitle = document.getElementById('signatureTitle').value.trim() || 'Founder & Creative Director, MA Technologies';
         const calendarUrl = 'https://cal.com/ahsan1o?embed=true&layout=month_view&theme=light';
 
         const parsed = parseInput(raw);
@@ -425,7 +436,16 @@ Founder & Creative Director, MA Technologies</textarea>
 
       <p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">Also, if you're curious about our style and the kind of work we do, take a look at <a href="${escapeHtml(websiteUrl)}" style="color:${escapeHtml(brandColor)};text-decoration:none;"><strong>what we've built</strong></a>. It's a quick browse.</p>
 
-      <p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">Best,<br><strong>${escapeHtml(signatureName)}</strong><br>${escapeHtml(signatureTitle)}</p>
+      <div style="margin: 8px 0 18px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; background: #f8fafc;">
+        <p style="font-size: 13px; color: #64748b; margin: 0 0 8px;">Best regards,</p>
+        <p style="font-size: 18px; color: #0f172a; margin: 0 0 2px;"><strong>${escapeHtml(signatureName)}</strong></p>
+        <p style="font-size: 13px; color: ${escapeHtml(brandColor)}; margin: 0 0 10px; font-weight: 600;">${escapeHtml(signatureTitle)}</p>
+        <p style="font-size: 12px; color: #475569; margin: 0; line-height: 1.6;">
+          W: <a href="${escapeHtml(websiteUrl)}" style="color:${escapeHtml(brandColor)}; text-decoration:none;">${escapeHtml(websiteUrl.replace(/^https?:\/\//, ''))}</a> |
+          WhatsApp: <a href="https://wa.me/923264427035" style="color:${escapeHtml(brandColor)}; text-decoration:none;">+92 326 4427035</a> |
+          <a href="https://www.linkedin.com/company/111473095/" style="color:${escapeHtml(brandColor)}; text-decoration:none;">LinkedIn</a>
+        </p>
+      </div>
 
       <p style="font-size: 12px; color: #64748b; font-style: italic; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e2e8f0;">P.S. – If you'd prefer to grab a time on my calendar instead, <a href="${calendarUrl}" style="color:${escapeHtml(brandColor)};text-decoration:none;">click here</a>. Either way works for me.</p>
     </div>
@@ -511,7 +531,7 @@ Founder & Creative Director, MA Technologies</textarea>
       buildEmail();
     });
 
-    ['rawText', 'brandName', 'brandTagline', 'brandColor', 'logoUrl', 'websiteUrl', 'ctaLabel', 'ctaUrl', 'prototypeLabel', 'prototypeUrl'].forEach((id) => {
+    ['rawText', 'brandName', 'brandTagline', 'brandColor', 'logoUrl', 'websiteUrl', 'ctaLabel', 'ctaUrl', 'prototypeLabel', 'prototypeUrl', 'signatureName', 'signatureTitle'].forEach((id) => {
       document.getElementById(id).addEventListener('input', () => buildEmail());
     });
 
