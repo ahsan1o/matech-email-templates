@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Insights - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .intro-line {
+            font-size: 13px;
+            color: #0d9488;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            border: 1px solid #cbd5e1;
+            border-left: 4px solid #6366f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .insight-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .insight-title {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .insight-content {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .stat-highlight {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 3px solid #f59e0b;
+        }
+        .stat-number {
+            color: #f59e0b;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .stat-text {
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .trend-list {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .trend-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #0f172a;
+            align-items: flex-start;
+        }
+        .trend-number {
+            background-color: #0d9488;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .trend-desc {
+            color: #475569;
+        }
+        .resource-box {
+            background: linear-gradient(135deg, #f0fdfa 0%, #effdff 100%);
+            border: 2px solid #99f6e4;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .resource-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .resource-title {
+            font-weight: 700;
+            color: #0d9488;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .resource-desc {
+            font-size: 13px;
+            color: #0f766e;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 12px 36px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .closing-text {
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .greeting {
+                font-size: 18px;
+            }
+            .insight-title {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="intro-line">Industry Insights</div>
+            <div class="greeting">Hi [Company Name],</div>
+
+            <p class="body-text">
+                We've been working with companies in your space, and there's a clear trend emerging that most teams aren't talking about yet. I thought you'd find this useful.
+            </p>
+
+            <!-- Main Insight -->
+            <div class="insight-box">
+                <div class="insight-icon">📊</div>
+                <div class="insight-title">The 2026 [Industry] Shift</div>
+                <p class="insight-content">
+                    Companies that invest in [specific technology/approach] this year are positioning themselves to capture [X% market share increase / significant efficiency gains]. Those that wait are already behind.
+                </p>
+
+                <div class="stat-highlight">
+                    <div class="stat-number">+300%</div>
+                    <div class="stat-text">Businesses adopting [solution type] report productivity improvements</div>
+                </div>
+
+                <p class="insight-content">
+                    Here's what's happening: <strong>The competitive bar is rising.</strong> Your customers expect [specific expectation]. If you're not delivering that, they'll go to someone who is.
+                </p>
+            </div>
+
+            <!-- Key Trends -->
+            <div class="trend-list">
+                <div class="section-title">What's Changing Right Now</div>
+                <div class="trend-item">
+                    <div class="trend-number">1</div>
+                    <div>
+                        <strong><span class="highlight">Customer expectations</span></strong><br>
+                        <span class="trend-desc">Modern users demand [specific feature/experience]—it's no longer a nice-to-have.</span>
+                    </div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-number">2</div>
+                    <div>
+                        <strong><span class="highlight">Operational efficiency</span></strong><br>
+                        <span class="trend-desc">Companies reducing operational overhead by [X%] using [solution type].</span>
+                    </div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-number">3</div>
+                    <div>
+                        <strong><span class="highlight">Competitive differentiation</span></strong><br>
+                        <span class="trend-desc">Early movers are gaining significant market advantages over slower competitors.</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="body-text">
+                None of this is theoretical—we're seeing these patterns in real-time across multiple companies in your sector.
+            </p>
+
+            <!-- Resource Offer -->
+            <div class="resource-box">
+                <div class="resource-icon">📋</div>
+                <div class="resource-title">Free Industry Benchmarking Checklist</div>
+                <p class="resource-desc">
+                    We've put together a practical checklist so you can evaluate where [Company Name] stands relative to your competitors. It takes 10 minutes to complete.
+                </p>
+                <a href="#" class="cta-button">Download Checklist</a>
+            </div>
+
+            <p class="body-text">
+                Once you complete it, you'll have clarity on:
+            </p>
+
+            <div class="trend-list" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #0d9488; padding: 15px;">
+                <div class="trend-item" style="margin-bottom: 8px;">
+                    <div class="trend-number" style="width: 18px; height: 18px; font-size: 10px; margin-right: 10px;">✓</div>
+                    <div><span class="trend-desc">What your strong points are</span></div>
+                </div>
+                <div class="trend-item" style="margin-bottom: 8px;">
+                    <div class="trend-number" style="width: 18px; height: 18px; font-size: 10px; margin-right: 10px;">✓</div>
+                    <div><span class="trend-desc">Where you might be falling behind</span></div>
+                </div>
+                <div class="trend-item" style="margin-bottom: 0;">
+                    <div class="trend-number" style="width: 18px; height: 18px; font-size: 10px; margin-right: 10px;">✓</div>
+                    <div><span class="trend-desc">What you can do about it (without massive investment)</span></div>
+                </div>
+            </div>
+
+            <p class="body-text">
+                The checklist is free, no strings attached. But if you want to talk through your specific situation after completing it, we're here to help. Most companies find it's eye-opening.
+            </p>
+
+            <p class="closing-text">
+                Questions? Just reply to this email—I'm here to help clarify anything.
+            </p>
+
+            <p class="body-text">
+                Best,<br>
+                <strong>[Your Name]</strong><br>
+                Strategic Insights Lead<br>
+                MA Technologies
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies</strong><br>
+                Building Tomorrow's Solutions, Today
+            </p>
+            <div>
+                <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                <a href="mailto:sales@matechnologies.pk" class="footer-link">Sales</a>
+                <a href="mailto:info@matechnologies.pk" class="footer-link">Info</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

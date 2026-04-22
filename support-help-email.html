@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Response - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .solution-box {
+            background-color: #f0fdfa;
+            border: 1px solid #99f6e4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .solution-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .solution-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #0d9488;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        .solution-content {
+            color: #0f766e;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .step {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #0d9488;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .faq-section {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .faq-a {
+            color: #64748b;
+            font-size: 13px;
+            padding-left: 15px;
+            border-left: 2px solid #cbd5e1;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 12px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .resources-link {
+            color: #0d9488;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .resources-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .greeting {
+                font-size: 18px;
+            }
+            .code-block {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">We're Here to Help! 👋</div>
+
+            <p class="body-text">
+                Hi [Client Name],
+            </p>
+
+            <p class="body-text">
+                Thank you for reaching out to our support team. We received your request regarding <span class="highlight">[Issue Summary]</span>, and we're here to help you resolve it quickly.
+            </p>
+
+            <!-- Solution Box -->
+            <div class="solution-box">
+                <div class="solution-title">
+                    <div class="solution-icon">✓</div>
+                    Solution Found
+                </div>
+                <div class="solution-content">
+                    <p style="margin-bottom: 10px;">We've identified the issue and here's how to resolve it:</p>
+                </div>
+            </div>
+
+            <!-- Steps to Resolve -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Clear Your Browser Cache</div>
+                <div class="step-desc">Press Ctrl+Shift+Del (or Cmd+Shift+Del on Mac) and clear your browsing data from the last 24 hours.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Hard Refresh Your Application</div>
+                <div class="step-desc">Try a hard refresh: Ctrl+F5 (or Cmd+Shift+R on Mac) to reload the page completely.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Check Your Account Settings</div>
+                <div class="step-desc">Navigate to Settings → Account, and verify all configurations are correct.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Test the Feature Again</div>
+                <div class="step-desc">Try using the feature again. If the issue persists, please let us know.</div>
+            </div>
+
+            <!-- Technical Details -->
+            <p class="body-text" style="margin-top: 30px; font-weight: 600;">
+                If you're still experiencing issues, here's some technical information that might help:
+            </p>
+
+            <div class="code-block">API Version: v2.1.0
+Status: ✓ Operational
+Last Update: April 2, 2026
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <div class="section-title">Related FAQ</div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Q: How do I access detailed logs?</div>
+                    <div class="faq-a">A: Navigate to Dashboard → Logs to view all activity and error messages.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Q: Can I export my data?</div>
+                    <div class="faq-a">A: Yes, go to Settings → Export Data, and select your preferred format.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Q: How long does a full sync take?</div>
+                    <div class="faq-a">A: Typically 5-15 minutes depending on your data volume.</div>
+                </div>
+            </div>
+
+            <p class="body-text">
+                Didn't solve your issue? No problem! Click the button below to schedule a call with our support team.
+            </p>
+
+            <div style="text-align: center;">
+                <a href="https://wa.me/923264427035" class="cta-button">Chat Support</a>
+            </div>
+
+            <p class="body-text">
+                You can also check our <a href="#" class="resources-link">knowledge base</a> for more articles and tutorials.
+            </p>
+
+            <p class="body-text">
+                We're committed to making sure you have the best experience possible. If you need anything else, just reach out—we're always happy to help!
+            </p>
+
+            <p class="body-text">
+                Best regards,<br>
+                <strong>MA Tech Support Team</strong><br>
+                Response Time: Generally within 24 hours
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies Support</strong><br>
+                Available Monday - Friday, 9 AM - 6 PM
+            </p>
+            <div>
+                <a href="https://matechnologies.pk/help" class="footer-link">Help Center</a>
+                <a href="https://matechnologies.pk/status" class="footer-link">Status Page</a>
+                <a href="mailto:support@matechnologies.pk" class="footer-link">Email Support</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp Chat</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

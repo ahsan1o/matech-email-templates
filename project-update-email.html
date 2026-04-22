@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Update - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .project-name {
+            color: #0d9488;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .progress-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .milestone {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .milestone:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .milestone-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .milestone-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .status-complete {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .status-in-progress {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        .status-upcoming {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        .milestone-desc {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        .stat-box {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d9488;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 12px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .greeting {
+                font-size: 20px;
+            }
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">
+                Project Update
+                <div class="project-name">Project Name Here</div>
+            </div>
+
+            <p class="body-text">
+                Hi [Client Name],
+            </p>
+
+            <p class="body-text">
+                We're excited to share the progress made on your project. Our team has been working diligently to bring your vision to life, and we're pleased with how things are progressing.
+            </p>
+
+            <!-- Progress Stats -->
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Complete</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Days Left</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Features</div>
+                </div>
+            </div>
+
+            <!-- Milestones -->
+            <div class="progress-section">
+                <div class="section-title">Recent Milestones</div>
+
+                <div class="milestone">
+                    <div class="milestone-title">
+                        UI/UX Design
+                        <span class="milestone-status status-complete">✓ Complete</span>
+                    </div>
+                    <div class="milestone-desc">All user interfaces designed and approved</div>
+                </div>
+
+                <div class="milestone">
+                    <div class="milestone-title">
+                        Backend Development
+                        <span class="milestone-status status-in-progress">In Progress</span>
+                    </div>
+                    <div class="milestone-desc">Core APIs and database setup 80% complete</div>
+                </div>
+
+                <div class="milestone">
+                    <div class="milestone-title">
+                        Frontend Integration
+                        <span class="milestone-status status-upcoming">Upcoming</span>
+                    </div>
+                    <div class="milestone-desc">Scheduled to begin next week</div>
+                </div>
+            </div>
+
+            <p class="body-text">
+                <strong>Key Achievements This Week:</strong><br>
+                • Completed user authentication module<br>
+                • Implemented core API endpoints<br>
+                • Set up CI/CD pipeline for automated testing
+            </p>
+
+            <p class="body-text">
+                <strong>Next Steps:</strong><br>
+                • Frontend component development<br>
+                • QA testing phase<br>
+                • Final deployment preparation
+            </p>
+
+            <div style="text-align: center;">
+                <a href="#" class="cta-button">View Full Progress</a>
+            </div>
+
+            <p class="body-text">
+                If you have any questions or would like to discuss anything in detail, don't hesitate to reach out. We're here to ensure everything meets your expectations.
+            </p>
+
+            <p class="body-text">
+                Thanks for your continued trust!<br>
+                <strong>The MA Tech Team</strong>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies</strong><br>
+                Building Tomorrow's Solutions, Today
+            </p>
+            <div>
+                <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                <a href="mailto:hello@matechnologies.pk" class="footer-link">Email</a>
+                <a href="https://www.linkedin.com/company/111473095/" class="footer-link">LinkedIn</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            color: #cbd5e1;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .greeting {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #0d9488;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item-name {
+            color: #475569;
+            flex: 1;
+        }
+        .item-price {
+            color: #0f172a;
+            font-weight: 600;
+            text-align: right;
+            min-width: 80px;
+        }
+        .total-section {
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .total-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        .total-amount {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .timeline {
+            margin: 20px 0;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #0d9488;
+            border-radius: 50%;
+            margin-right: 15px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 3px;
+        }
+        .timeline-desc {
+            color: #64748b;
+            font-size: 13px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 14px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 20px 0;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .secondary-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #0d9488;
+            padding: 12px 32px;
+            text-decoration: none;
+            border: 2px solid #0d9488;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .secondary-button:hover {
+            background-color: #f0fdfa;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .header-title {
+                font-size: 22px;
+            }
+            .total-amount {
+                font-size: 24px;
+            }
+            .secondary-button {
+                display: block;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+            <div class="header-title">Project Proposal</div>
+            <div class="header-subtitle">Ref: #MA-2026-001</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">Hi [Client Name],</div>
+
+            <p class="body-text">
+                Thank you for the opportunity to work with you. We've carefully reviewed your requirements and put together a <span class="highlight">comprehensive proposal</span> for your project.
+            </p>
+
+            <!-- Project Overview -->
+            <div class="section">
+                <div class="section-title">Project Overview</div>
+                <p class="body-text" style="margin: 0;">
+                    Custom web application development with modern tech stack, full-stack development, API integration, and deployment infrastructure setup.
+                </p>
+            </div>
+
+            <!-- Deliverables -->
+            <div class="section">
+                <div class="section-title">Deliverables</div>
+                <div class="item">
+                    <div class="item-name">UI/UX Design (15 screens)</div>
+                    <div class="item-price">$2,500</div>
+                </div>
+                <div class="item">
+                    <div class="item-name">Frontend Development</div>
+                    <div class="item-price">$4,500</div>
+                </div>
+                <div class="item">
+                    <div class="item-name">Backend API Development</div>
+                    <div class="item-price">$5,000</div>
+                </div>
+                <div class="item">
+                    <div class="item-name">Database Design & Setup</div>
+                    <div class="item-price">$1,500</div>
+                </div>
+                <div class="item">
+                    <div class="item-name">Deployment & Infrastructure</div>
+                    <div class="item-price">$1,500</div>
+                </div>
+            </div>
+
+            <!-- Total -->
+            <div class="total-section">
+                <div class="total-label">Project Total</div>
+                <div class="total-amount">$15,000</div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="section">
+                <div class="section-title">Project Timeline</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Week 1-2</div>
+                            <div class="timeline-desc">Requirements finalization & UI/UX Design</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Week 3-4</div>
+                            <div class="timeline-desc">Frontend & Backend Development</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Week 5</div>
+                            <div class="timeline-desc">Testing, QA & Refinements</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Week 6</div>
+                            <div class="timeline-desc">Deployment & Launch</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="body-text">
+                <strong>This proposal includes:</strong><br>
+                ✓ Full source code ownership<br>
+                ✓ 30 days post-launch support<br>
+                ✓ Two rounds of revisions<br>
+                ✓ Documentation & handover
+            </p>
+
+            <div style="text-align: center;">
+                <a href="#" class="cta-button">Accept Proposal</a>
+                <a href="https://wa.me/923264427035" class="secondary-button">Discuss on WhatsApp</a>
+            </div>
+
+            <p class="body-text">
+                This proposal is valid for 14 days. If you'd like to discuss any aspect of this proposal or have questions, we're here to help.
+            </p>
+
+            <p class="body-text">
+                Looking forward to partnering with you!<br>
+                <strong>The MA Tech Team</strong>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies</strong><br>
+                Building Tomorrow's Solutions, Today
+            </p>
+            <div>
+                <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                <a href="mailto:hello@matechnologies.pk" class="footer-link">Email</a>
+                <a href="https://www.linkedin.com/company/111473095/" class="footer-link">LinkedIn</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

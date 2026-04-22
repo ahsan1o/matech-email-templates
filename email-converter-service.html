@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Converter Service</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ef;
+      --brand: #0d9488;
+      --brand-dark: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 0% 0%, #e7f7f4, transparent 45%), var(--bg);
+    }
+    .wrap {
+      max-width: 1300px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .title {
+      margin-bottom: 14px;
+    }
+    .title h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    .title p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+    }
+    .card h2 {
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .pad { padding: 14px 16px; }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    label {
+      font-size: 12px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid #c5f1ea;
+      border-color: var(--brand);
+    }
+    textarea {
+      min-height: 350px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    form {
+      margin: 0;
+    }
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      background: var(--brand);
+    }
+    button:hover {
+      background: var(--brand-dark);
+    }
+    button.secondary {
+      background: #1e293b;
+    }
+    button.secondary:hover {
+      background: #0f172a;
+    }
+    .output {
+      min-height: 280px;
+    }
+    iframe {
+      width: 100%;
+      min-height: 420px;
+      border: 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .subject-box {
+      margin-top: 8px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      background: #fbfdff;
+    }
+    .error-box {
+      margin-top: 10px;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 13px;
+      color: #991b1b;
+      background: #fff1f2;
+      display: none;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr; }
+      .row, .row.three { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <h1>Paste-to-HTML Email Converter</h1>
+      <p>Paste plain text outreach, click generate, copy production-ready HTML email with button CTA and clean formatting.</p>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Input</h2>
+        <form class="pad" id="emailForm">
+          <div class="row three">
+            <div>
+              <label for="brandName">Brand Name</label>
+              <input id="brandName" value="MA Technologies" />
+            </div>
+            <div>
+              <label for="brandTagline">Tagline</label>
+              <input id="brandTagline" value="Building Tomorrow's Solutions, Today" />
+            </div>
+            <div>
+              <label for="brandColor">Primary Color</label>
+              <input id="brandColor" value="#0d9488" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="logoUrl">Logo URL</label>
+              <input id="logoUrl" value="https://matechnologies.pk/matechTemplate.png" />
+            </div>
+            <div>
+              <label for="websiteUrl">Website URL</label>
+              <input id="websiteUrl" value="https://matechnologies.pk" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="ctaLabel">CTA Button Label</label>
+              <input id="ctaLabel" value="Let's Chat" />
+            </div>
+            <div>
+              <label for="ctaUrl">CTA Button URL</label>
+              <input id="ctaUrl" value="https://wa.me/923264427035" />
+            </div>
+          </div>
+
+          <label for="rawText">Paste Plain Text Email</label>
+          <textarea id="rawText">Subject: Quick thought on HER Project
+
+Hi Haley,
+
+I came across your profile and was genuinely impressed by the way you blend boxing, strength work, and coaching into one clear identity. The HER Project launch on April 27 makes this feel like a strong moment to build a better digital home around everything you are creating.
+
+Why I am reaching out: when a coach is launching a new program, the biggest gap is often not the content itself, but the system around it.
+
+We build custom fitness websites and client platforms for creators who need a central hub for bookings, program delivery, and branded presentation that matches their energy.
+
+https://v0-fitness-coach-portfolio-service-blond.vercel.app/
+
+Would you be open to a quick 15-minute chat next week?
+
+Best,
+Ahsan Malik
+Founder & Creative Director, MA Technologies</textarea>
+          <div class="small">Tip: If first line starts with "Subject:", it is extracted automatically and not repeated in the body.</div>
+
+          <div class="actions">
+            <button id="generateBtn" type="submit">Generate HTML</button>
+            <button id="copyHtmlBtn" class="secondary" type="button">Copy HTML</button>
+            <button id="copySubjectBtn" class="secondary" type="button">Copy Subject</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Output</h2>
+        <div class="pad">
+          <div><strong>Extracted Subject</strong></div>
+          <div id="subjectOut" class="subject-box">(none)</div>
+          <div id="errorOut" class="error-box"></div>
+          <label for="htmlOut" style="margin-top: 12px;">Generated HTML</label>
+          <textarea id="htmlOut" class="output" spellcheck="false"></textarea>
+        </div>
+        <iframe id="preview"></iframe>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function linkify(text) {
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+      return text.replace(urlRegex, '<a href="$1" style="color: {{brandColor}}; text-decoration: none;"><strong>$1</strong></a>');
+    }
+
+    function parseInput(raw) {
+      const lines = raw.replace(/\r/g, '').split('\n');
+      let subject = '';
+      if (lines[0] && /^subject\s*:/i.test(lines[0])) {
+        subject = lines[0].replace(/^subject\s*:/i, '').trim();
+        lines.shift();
+      }
+      const body = lines.join('\n').trim();
+      const paragraphs = body.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+      return { subject, paragraphs };
+    }
+
+    function paragraphToHtml(paragraph) {
+      const safe = escapeHtml(paragraph);
+      return '<p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">' + linkify(safe).replace(/\n/g, '<br>') + '</p>';
+    }
+
+    function signatureToHtml(paragraph) {
+      const lines = paragraph.split('\n').map(line => line.trim()).filter(Boolean);
+      if (!lines.length) {
+        return '';
+      }
+
+      const signatureBody = lines.map((line, index) => {
+        const safeLine = escapeHtml(line);
+        if (index === 0) {
+          return safeLine;
+        }
+        if (index === 1) {
+          return '<strong>' + safeLine + '</strong>';
+        }
+        return safeLine;
+      }).join('<br>');
+
+      return '<p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">' + signatureBody + '</p>';
+    }
+
+    function buildEmail() {
+      const errorOut = document.getElementById('errorOut');
+      errorOut.style.display = 'none';
+      errorOut.textContent = '';
+
+      try {
+      const raw = document.getElementById('rawText').value;
+      const brandName = document.getElementById('brandName').value.trim() || 'Your Brand';
+      const brandTagline = document.getElementById('brandTagline').value.trim() || '';
+      const brandColor = document.getElementById('brandColor').value.trim() || '#0d9488';
+      const logoUrl = document.getElementById('logoUrl').value.trim();
+      const websiteUrl = document.getElementById('websiteUrl').value.trim() || '#';
+      const ctaLabel = document.getElementById('ctaLabel').value.trim() || 'Book a Call';
+      const ctaUrl = document.getElementById('ctaUrl').value.trim() || '#';
+      const signatureName = 'Ahsan Malik';
+      const signatureTitle = 'MA Technologies';
+      const calendarUrl = 'https://cal.com/ahsan1o?embed=true&layout=month_view&theme=light';
+
+      const parsed = parseInput(raw);
+      document.getElementById('subjectOut').textContent = parsed.subject || '(No subject detected)';
+
+      const greetingIdx = parsed.paragraphs.findIndex(p => /^hi\b|^hello\b/i.test(p));
+      const signatureStart = parsed.paragraphs.findIndex((paragraph) => {
+        const firstLine = (paragraph.split('\n')[0] || '').trim();
+        return /^(best|regards|sincerely|warmly|thanks)[,.:!?\s]*$/i.test(firstLine);
+      });
+      let greetingHtml = '';
+      const bodyParts = signatureStart >= 0 ? parsed.paragraphs.slice(0, signatureStart) : [...parsed.paragraphs];
+      if (greetingIdx >= 0) {
+        greetingHtml = '<p style="font-size: 16px; font-weight: 500; color: #0f172a; margin: 0 0 15px;">' + escapeHtml(bodyParts[greetingIdx]) + '</p>';
+        bodyParts.splice(greetingIdx, 1);
+      }
+
+      const bodyHtml = bodyParts.map((paragraph) => {
+        if (/^(best|regards|sincerely|warmly|thanks)[,.!?\s]*$/i.test(paragraph.trim().split('\n')[0] || '')) {
+          return signatureToHtml(paragraph);
+        }
+        return paragraphToHtml(paragraph);
+      }).join('\n            ');
+
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Thought - ${escapeHtml(brandName)}</title>
+</head>
+<body style="margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:#f8fafc;color:#0f172a;">
+  <div style="max-width:600px;margin:0 auto;background:#ffffff;">
+    <div style="background:#ffffff;padding:30px 20px;text-align:center;border-bottom:1px solid #e2e8f0;">
+      ${logoUrl ? `<img src="${escapeHtml(logoUrl)}" alt="${escapeHtml(brandName)}" style="display:inline-block;width:200px;height:auto;">` : ''}
+    </div>
+
+    <div style="padding:40px 30px;background:#ffffff;">
+      ${greetingHtml}
+      ${bodyHtml}
+
+      <p style="font-size: 13px; color: #475569; margin: 0 0 10px; line-height: 1.7;">
+        You can also check us on social media:
+        <span style="display:inline-block; vertical-align:middle;">
+          <a href="https://www.linkedin.com/company/111473095/" aria-label="LinkedIn" style="display:inline-block;margin-right:8px;line-height:0;vertical-align:middle;color:${escapeHtml(brandColor)};text-decoration:none;"><img src="https://matechnologies.pk/linkedinIcon.png" alt="LinkedIn" style="width:26px;height:26px;display:inline-block;vertical-align:middle;"></a>
+          <a href="https://www.instagram.com/matechnologiespvtltd/" aria-label="Instagram" style="display:inline-block;margin-right:0;line-height:0;vertical-align:middle;color:${escapeHtml(brandColor)};text-decoration:none;"><img src="https://matechnologies.pk/instaIcon.png" alt="Instagram" style="width:26px;height:26px;display:inline-block;vertical-align:middle;"></a>
+        </span>
+      </p>
+
+      <div style="text-align:center;">
+        <a href="${escapeHtml(ctaUrl)}" style="display:inline-block;background:${escapeHtml(brandColor)};color:#ffffff;padding:11px 32px;text-decoration:none;border-radius:6px;font-weight:500;font-size:14px;line-height:20px;white-space:nowrap;margin:20px 0;"><img src="https://matechnologies.pk/whatsappLogo.png" alt="WhatsApp" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:8px;">${escapeHtml(ctaLabel)}</a>
+      </div>
+
+      <p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">If that doesn't work for you right now, totally understand. Feel free to ping if things change.</p>
+
+      <p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">Also, if you're curious about our style and the kind of work we do, take a look at <a href="${escapeHtml(websiteUrl)}" style="color:${escapeHtml(brandColor)};text-decoration:none;"><strong>what we've built</strong></a>. It's a quick browse.</p>
+
+      <p style="font-size: 14px; color: #475569; margin: 0 0 18px; line-height: 1.7;">Best,<br><strong>${escapeHtml(signatureName)}</strong><br>${escapeHtml(signatureTitle)}</p>
+
+      <p style="font-size: 12px; color: #64748b; font-style: italic; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e2e8f0;">P.S. – If you'd prefer to grab a time on my calendar instead, <a href="${calendarUrl}" style="color:${escapeHtml(brandColor)};text-decoration:none;">click here</a>. Either way works for me.</p>
+    </div>
+
+    <div style="background:#f8fafc;padding:25px 30px;text-align:center;border-top:1px solid #e2e8f0;font-size:12px;color:#64748b;">
+      <p style="margin:0 0 12px;"><strong>${escapeHtml(brandName)}</strong><br>${escapeHtml(brandTagline)}</p>
+      <p style="margin:0;"><a href="${escapeHtml(websiteUrl)}" style="color:${escapeHtml(brandColor)};text-decoration:none;">Our Work</a> | <a href="https://wa.me/923264427035" aria-label="WhatsApp" style="color:${escapeHtml(brandColor)};text-decoration:none;"><img src="https://matechnologies.pk/whatsappLogo.png" alt="WhatsApp" style="width:26px;height:26px;display:inline-block;vertical-align:middle;"></a></p>
+    </div>
+  </div>
+</body>
+</html>`;
+
+  const finalHtml = html.split('{{brandColor}}').join(brandColor);
+      document.getElementById('htmlOut').value = finalHtml;
+      const iframe = document.getElementById('preview');
+      iframe.srcdoc = finalHtml;
+      return parsed.subject;
+      } catch (err) {
+        const message = err && err.message ? err.message : String(err);
+        const fallback = 'Email generation failed. Please check your input and try again.\n\nDetails: ' + message;
+        errorOut.style.display = 'block';
+        errorOut.textContent = fallback;
+        console.error(err);
+        return '';
+      }
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    document.getElementById('emailForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      buildEmail();
+    });
+
+    document.getElementById('copyHtmlBtn').addEventListener('click', async () => {
+      const text = document.getElementById('htmlOut').value;
+      if (!text.trim()) buildEmail();
+      const ok = await copyText(document.getElementById('htmlOut').value);
+      alert(ok ? 'HTML copied.' : 'Clipboard blocked. Copy manually from output box.');
+    });
+
+    document.getElementById('copySubjectBtn').addEventListener('click', async () => {
+      const subject = buildEmail();
+      const ok = await copyText(subject || '');
+      alert(ok ? 'Subject copied.' : 'Clipboard blocked. Copy manually from Subject box.');
+    });
+
+    buildEmail();
+  </script>
+</body>
+</html>

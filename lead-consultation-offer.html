@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Consultation - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .consultation-box {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%);
+            border: 2px solid #99f6e4;
+            border-left: 4px solid #0d9488;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .consultation-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .consultation-title {
+            font-weight: 700;
+            color: #0d9488;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .consultation-desc {
+            font-size: 13px;
+            color: #0f766e;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .consultation-duration {
+            font-size: 12px;
+            color: #0b7285;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .what-we-cover {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .check-item {
+            display: flex;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #475569;
+            align-items: flex-start;
+        }
+        .check-mark {
+            color: #0d9488;
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .promise-box {
+            background-color: #f8f5f0;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .promise-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .promise-text {
+            font-size: 13px;
+            color: #78350f;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 14px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 25px 0;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .secondary-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #0d9488;
+            padding: 12px 32px;
+            text-decoration: none;
+            border: 2px solid #0d9488;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        .secondary-button:hover {
+            background-color: #f0fdfa;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .greeting {
+                font-size: 18px;
+            }
+            .header-title {
+                font-size: 20px;
+            }
+            .secondary-button {
+                display: block;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+            <div class="header-title">Free Strategy Consultation</div>
+            <div class="header-subtitle">No obligation, just expert advice</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">Hi [Decision Maker],</div>
+
+            <p class="body-text">
+                Most businesses we work with come to us with the same question: <span class="highlight">"How can we [achieve goal/solve problem] without disrupting our current operations?"</span>
+            </p>
+
+            <p class="body-text">
+                If that sounds familiar, we'd like to offer you something that might help: <strong>a free, no-pressure consultation</strong> where we'll analyze your specific situation and show you exactly what's possible.
+            </p>
+
+            <!-- Consultation Offer -->
+            <div class="consultation-box">
+                <div class="consultation-icon">🎯</div>
+                <div class="consultation-title">Your Free Consultation Includes:</div>
+                <p class="consultation-desc">
+                    A 30-minute focused discussion with our solutions team to understand your goals, identify roadblocks, and outline a clear path forward.
+                </p>
+                <div class="consultation-duration">30 Minutes | Zero Sales Pitch | Actionable Insights</div>
+            </div>
+
+            <!-- What We'll Cover -->
+            <div class="what-we-cover">
+                <div class="section-title">What We'll Discuss</div>
+                <div class="check-item">
+                    <div class="check-mark">✓</div>
+                    <div><strong>Your current setup</strong> - How you're doing things now and where friction exists</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-mark">✓</div>
+                    <div><strong>Your ideal outcome</strong> - What success looks like for your team</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-mark">✓</div>
+                    <div><strong>Realistic solutions</strong> - What's possible without overcomplicating things</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-mark">✓</div>
+                    <div><strong>Next steps (if interested)</strong> - A clear roadmap with timelines and investment</div>
+                </div>
+            </div>
+
+            <!-- Why Us -->
+            <p class="body-text">
+                We've worked with [X] companies like yours in [industry], and we've learned exactly what works and what doesn't. We won't waste your time with generic advice—you'll get specific, actionable recommendations tailored to your situation.
+            </p>
+
+            <!-- Promise -->
+            <div class="promise-box">
+                <div class="promise-title">Our Promise</div>
+                <p class="promise-text">
+                    If we recommend anything, it will be because we genuinely believe it'll move the needle for you. If we don't think we're the right fit, we'll tell you that too. No pressure. Ever.
+                </p>
+            </div>
+
+            <p class="body-text">
+                Ready to explore what's possible? Pick a time that works for you:
+            </p>
+
+            <div style="text-align: center;">
+                <a href="https://wa.me/923264427035" class="cta-button">Schedule Your Consultation</a>
+                <a href="https://wa.me/923264427035" class="secondary-button">Chat on WhatsApp</a>
+            </div>
+
+            <p style="font-size: 13px; color: #64748b; text-align: center; margin-top: 15px;">
+                Or reply to this email and we'll find a time that suits you best.
+            </p>
+
+            <p class="body-text">
+                Looking forward to learning more about <span class="highlight">[Company Name]</span>!<br>
+                <strong>[Your Name]</strong><br>
+                Consultation Lead<br>
+                MA Technologies
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies</strong><br>
+                Building Tomorrow's Solutions, Today
+            </p>
+            <div>
+                <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                <a href="mailto:sales@matechnologies.pk" class="footer-link">Sales</a>
+                <a href="mailto:info@matechnologies.pk" class="footer-link">Info</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

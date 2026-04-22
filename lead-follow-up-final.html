@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Following Up - MA Tech</title>
+    <style type="text/css">
+        /* Reset styles */
+        body, table, td, div, p, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        img {
+            -ms-interpolation-mode: nearest-neighbor;
+            border: 0;
+            outline: none;
+            text-decoration: none;
+        }
+
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            min-width: 100% !important;
+            background-color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #0f172a;
+        }
+
+        .email-wrapper {
+            width: 100%;
+            background-color: #f8fafc;
+            padding: 20px 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-collapse: collapse;
+        }
+
+        .header-cell {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            display: block;
+            width: 200px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .content-cell {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+
+        .greeting {
+            font-size: 16px;
+            font-weight: 500;
+            color: #0f172a;
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin: 0 0 18px 0;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+
+        .story-box {
+            background-color: #f8fafc;
+            border-left: 3px solid #10b981;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .story-text {
+            font-size: 13px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .button-cell {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 12px 36px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            border: none;
+            line-height: 1.4;
+        }
+
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+
+        .ps-text {
+            font-size: 13px;
+            color: #64748b;
+            font-style: italic;
+            margin: 25px 0 0 0;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .footer-cell {
+            background-color: #0f172a;
+            padding: 25px 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .footer-text {
+            margin: 0 0 12px 0;
+            line-height: 1.5;
+        }
+
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #1e293b;
+            margin: 12px 0;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* Mobile styles */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                padding: 10px 0;
+            }
+
+            .header-cell {
+                padding: 20px 15px;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .logo {
+                width: 140px;
+            }
+
+            .content-cell {
+                padding: 25px 20px;
+            }
+
+            .greeting {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .body-text {
+                font-size: 13px;
+                margin-bottom: 15px;
+                line-height: 1.6;
+            }
+
+            .story-box {
+                padding: 12px;
+                margin: 15px 0;
+            }
+
+            .story-text {
+                font-size: 12px;
+            }
+
+            .button-cell {
+                padding: 15px 0;
+            }
+
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 13px;
+                display: inline-block;
+                min-height: 44px;
+                line-height: 20px;
+            }
+
+            .ps-text {
+                font-size: 12px;
+                margin-top: 20px;
+            }
+
+            .footer-cell {
+                padding: 20px 15px;
+            }
+
+            .footer-text {
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
+
+            .footer-link {
+                margin: 0 5px;
+                display: inline-block;
+            }
+
+            .copyright {
+                font-size: 10px;
+            }
+        }
+
+        /* Extra small devices */
+        @media only screen and (max-width: 480px) {
+            .content-cell {
+                padding: 20px 15px;
+            }
+
+            .greeting {
+                font-size: 14px;
+            }
+
+            .body-text {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+
+            .cta-button {
+                padding: 10px 24px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <table role="presentation" class="email-container" cellpadding="0" cellspacing="0" border="0">
+            <!-- Header -->
+            <tr>
+                <td class="header-cell">
+                    <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+                </td>
+            </tr>
+
+            <!-- Content -->
+            <tr>
+                <td class="content-cell">
+                    <p class="greeting">Hey [Name],</p>
+
+                    <p class="body-text">
+                        I know you're busy—I won't take much of your time. I sent an email a few days ago about [specific topic], and I wanted to follow up because I genuinely think there's something here worth a conversation.
+                    </p>
+
+                    <p class="body-text">
+                        I'm not going to repeat myself. But I did want to share something that might be relevant:
+                    </p>
+
+                    <div class="story-box">
+                        <p class="story-text">
+                            We worked with <strong>[Company Name]</strong> (they're similar to you—in [industry], dealing with [specific challenge]). They were in a tough spot with [their problem]. Within a few months of working together, they solved it and actually got ahead of their competition because they were willing to try something different.
+                        </p>
+                    </div>
+
+                    <p class="body-text">
+                        The reason I'm sharing this is because <span class="highlight">I genuinely believe we could help [Your Company] in a similar way</span>. But I also know that timing matters. If now isn't the right time, I get it.
+                    </p>
+
+                    <p class="body-text">
+                        What I'd suggest: Let's grab 15 minutes. No pressure, no complex pitch. I'll ask questions about what you're building, listen to what's working and what's not, and we can explore whether working together makes sense.
+                    </p>
+
+                    <p class="body-text">
+                        If you're interested, here are a few times that work for me. Pick one, and let's chat:
+                    </p>
+
+                    <div class="button-cell">
+                        <a href="https://cal.com/ahsan1o?embed=true&amp;layout=month_view&amp;theme=light" class="cta-button">Pick a Time</a>
+                    </div>
+
+                    <p class="body-text">
+                        And if you're not interested? Genuinely no hard feelings. I just wanted to make sure you had the option.
+                    </p>
+
+                    <p class="body-text">
+                        Best,<br>
+                        <strong>[Your Name]</strong><br>
+                        MA Technologies
+                    </p>
+
+                    <p class="ps-text">
+                        <strong>P.S.</strong> – If the times don't work, just let me know what does. I'm flexible.
+                    </p>
+                </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+                <td class="footer-cell">
+                    <p class="footer-text">
+                        <strong>MA Technologies</strong><br>
+                        Building Tomorrow's Solutions, Today
+                    </p>
+                    <div style="margin: 12px 0;">
+                        <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                        <a href="mailto:info@matechnologies.pk" class="footer-link">Info</a>
+                        <a href="https://www.linkedin.com/company/111473095/" class="footer-link">LinkedIn</a>
+                        <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+                    </div>
+                    <div class="divider"></div>
+                    <p class="copyright">© 2026 MA Technologies. All rights reserved.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

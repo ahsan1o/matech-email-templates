@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MA Technologies + Aftab Aziz Builders | Office Panaflex Banner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ma-bg: #f7fbfb;
+        --ma-text: #102028;
+        --ma-muted: #5f6d75;
+        --ma-accent: #14b8a6;
+        --ma-border: rgba(16, 32, 40, 0.08);
+        --ma-soft: rgba(20, 184, 166, 0.08);
+
+        --aftab-bg: #f4f7fd;
+        --aftab-text: #10224a;
+        --aftab-muted: #5d6a83;
+        --aftab-accent: #3147b3;
+        --aftab-border: rgba(49, 71, 179, 0.12);
+        --aftab-soft: rgba(49, 71, 179, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: linear-gradient(135deg, #f3f6f9 0%, #eef2f7 100%);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+
+      .banner {
+        width: min(100%, 1920px);
+        aspect-ratio: 16 / 7.25;
+        min-height: 820px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        border-radius: 22px;
+        box-shadow: 0 24px 80px rgba(20, 30, 40, 0.15);
+        background: linear-gradient(90deg, var(--ma-bg) 0 50%, var(--aftab-bg) 50% 100%);
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(16, 32, 40, 0.035) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(16, 32, 40, 0.035) 1px, transparent 1px);
+        background-size: 72px 72px;
+        opacity: 0.45;
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 156px 1fr;
+      }
+
+      .side {
+        padding: 92px 46px 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 28px;
+        min-width: 0;
+      }
+
+      .left {
+        background:
+          radial-gradient(circle at 15% 15%, var(--ma-soft), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.65), transparent 40%),
+          var(--ma-bg);
+        color: var(--ma-text);
+      }
+
+      .right {
+        background:
+          radial-gradient(circle at 85% 18%, var(--aftab-soft), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 38%),
+          var(--aftab-bg);
+        color: var(--aftab-text);
+      }
+
+      .divider {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(90deg, rgba(247, 251, 251, 0.98) 0%, rgba(231, 239, 244, 0.94) 48%, rgba(244, 247, 253, 0.98) 100%);
+      }
+
+      .divider::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.98), transparent 16%),
+          linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.82) 50%, transparent 100%),
+          linear-gradient(90deg, rgba(20, 184, 166, 0.06) 0%, rgba(255, 255, 255, 0) 35%, rgba(49, 71, 179, 0.06) 100%);
+        opacity: 0.9;
+      }
+
+      .transition-portal {
+        position: relative;
+        width: 100%;
+        height: min(80%, 520px);
+        overflow: hidden;
+      }
+
+      .portal-soft {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(20, 184, 166, 0.07) 0%, rgba(255, 255, 255, 0.46) 48%, rgba(49, 71, 179, 0.07) 100%),
+          radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.98), transparent 18%);
+        clip-path: polygon(0 100%, 0 78%, 10% 66%, 18% 74%, 28% 48%, 38% 66%, 48% 26%, 58% 66%, 68% 42%, 78% 70%, 88% 54%, 100% 76%, 100% 100%);
+        opacity: 0.42;
+      }
+
+      .portal-door {
+        position: absolute;
+        left: 50%;
+        top: 16%;
+        width: 32%;
+        height: 56%;
+        transform: translateX(-50%);
+        border-radius: 42% 42% 18% 18% / 22% 22% 14% 14%;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.94), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(235, 242, 248, 0.78));
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        box-shadow: 0 18px 32px rgba(16, 32, 40, 0.08);
+      }
+
+      .portal-door::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translateX(-50%);
+        width: 38%;
+        height: 12%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(20, 184, 166, 0.65), rgba(49, 71, 179, 0.65));
+        opacity: 0.8;
+      }
+
+      .portal-silhouette {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 42%;
+        height: 38%;
+        transform: translateX(-50%);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(247, 249, 253, 0.9)),
+          linear-gradient(90deg, rgba(20, 184, 166, 0.12), rgba(49, 71, 179, 0.12));
+        clip-path: polygon(50% 0, 100% 22%, 92% 100%, 8% 100%, 0 22%);
+        opacity: 0.34;
+      }
+
+      .portal-edge {
+        position: absolute;
+        top: 8%;
+        bottom: 8%;
+        width: 2px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, transparent, rgba(16, 32, 40, 0.08), transparent);
+        opacity: 0.55;
+      }
+
+      .portal-edge.left-edge { left: 22%; }
+      .portal-edge.right-edge { right: 22%; }
+
+      .portal-lens {
+        position: absolute;
+        left: 50%;
+        top: 44%;
+        width: 52%;
+        height: 34%;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+        filter: blur(14px);
+        opacity: 0.5;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        width: 112px;
+        height: 112px;
+        border-radius: 24px;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(16, 32, 40, 0.08);
+      }
+
+      .left .brand-mark { box-shadow: 0 10px 24px rgba(20, 184, 166, 0.08); }
+      .right .brand-mark { box-shadow: 0 10px 24px rgba(49, 71, 179, 0.08); }
+
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 8px;
+      }
+
+      .right .brand-mark img {
+        padding: 2px;
+        transform: scale(1.55);
+        transform-origin: center;
+      }
+
+      .title {
+        margin: 0;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(3.7rem, 4.8vw, 6.3rem);
+        line-height: 0.88;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .left .title span { color: var(--ma-accent); }
+      .right .title span { color: var(--aftab-accent); }
+
+      .subtitle {
+        margin: 14px 0 0;
+        max-width: 640px;
+        font-size: clamp(1rem, 1.15vw, 1.22rem);
+        line-height: 1.62;
+        color: inherit;
+        opacity: 0.8;
+      }
+
+      .catchphrase {
+        margin-top: 18px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: inherit;
+        opacity: 0.72;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        background: rgba(255, 255, 255, 0.88);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: inherit;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .service-card {
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        box-shadow: 0 10px 24px rgba(16, 32, 40, 0.04);
+        min-height: 92px;
+      }
+
+      .service-card strong {
+        display: block;
+        font-size: 13px;
+        line-height: 1.35;
+        margin-bottom: 6px;
+        color: inherit;
+      }
+
+      .service-card span {
+        display: block;
+        font-size: 12px;
+        line-height: 1.45;
+        color: inherit;
+        opacity: 0.72;
+      }
+
+      .service-strip {
+        margin-top: 22px;
+        padding: 16px 18px;
+        border-radius: 20px;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .service-strip-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        color: inherit;
+        opacity: 0.7;
+      }
+
+      .service-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .service-tags span {
+        padding: 9px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        background: rgba(255, 255, 255, 0.92);
+        font-size: 12px;
+        color: inherit;
+      }
+
+      .info-box {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(49, 71, 179, 0.12);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .info-kicker {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.75;
+        margin-bottom: 8px;
+      }
+
+      .info-line {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: inherit;
+        opacity: 0.82;
+      }
+
+      .info-line strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.35;
+        margin-bottom: 4px;
+        color: inherit;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .contact-card {
+        padding: 12px 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .right .contact-card {
+        border-color: rgba(49, 71, 179, 0.12);
+      }
+
+      .contact-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+        opacity: 0.72;
+      }
+
+      .contact-value {
+        font-size: 14px;
+        line-height: 1.45;
+        color: inherit;
+      }
+
+      .building-silhouette {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 26%;
+        opacity: 0.26;
+        pointer-events: none;
+      }
+
+      .building-silhouette svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .mini-qr {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .qr-block {
+        width: 92px;
+        height: 92px;
+        border-radius: 18px;
+        border: 1px solid rgba(16, 32, 40, 0.08);
+        overflow: hidden;
+        background: #fff;
+        flex: 0 0 auto;
+      }
+
+      .qr-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .qr-copy {
+        min-width: 0;
+      }
+
+      .qr-copy strong {
+        display: block;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .qr-copy span {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.45;
+        opacity: 0.72;
+      }
+
+      @media (max-width: 1200px) {
+        .banner { aspect-ratio: auto; }
+        .content { grid-template-columns: 1fr; }
+        .side { padding: 76px 24px 22px; }
+        .divider { min-height: 220px; }
+        .transition-portal { height: 100%; }
+        .portal-edge.left-edge { left: 18%; }
+        .portal-edge.right-edge { right: 18%; }
+        .service-grid { grid-template-columns: 1fr; }
+        .contact-grid { grid-template-columns: 1fr; }
+        .mini-qr { flex-direction: row; }
+      }
+
+      @media print {
+        @page { size: landscape; margin: 0; }
+        body { background: #fff; }
+        .page { padding: 0; }
+        .banner { width: 100vw; height: 100vh; border: 0; border-radius: 0; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="banner" aria-label="Shared office panaflex design for MA Technologies and Aftab Aziz Builders">
+        <div class="content">
+          <section class="side left">
+            <div>
+              <div class="brand">
+                <div class="brand-mark">
+                  <img src="https://matechnologies.pk/logo-120.png" alt="MA Technologies logo" />
+                </div>
+                <div>
+                  <h1 class="title">MA <span>Technologies</span></h1>
+                  <p class="subtitle">Software, websites, mobile apps, cloud, DevOps, and marketing services built to grow modern businesses.</p>
+                  <div class="catchphrase">Building digital experiences that feel clear, fast, and reliable.</div>
+                </div>
+              </div>
+
+              <div class="meta-row">
+                <div class="pill">Web Solutions</div>
+                <div class="pill">Mobile Apps</div>
+                <div class="pill">Cloud & DevOps</div>
+                <div class="pill">Marketing</div>
+              </div>
+
+              <div class="service-grid">
+                <div class="service-card">
+                  <strong>Website Design & Development</strong>
+                  <span>Modern, fast, and professional websites.</span>
+                </div>
+                <div class="service-card">
+                  <strong>Custom Software & Mobile Apps</strong>
+                  <span>Business systems and mobile products.</span>
+                </div>
+                <div class="service-card">
+                  <strong>Cloud, DevOps & APIs</strong>
+                  <span>Automation, integrations, and reliable systems.</span>
+                </div>
+                <div class="service-card">
+                  <strong>Marketing, SEO & Ads</strong>
+                  <span>Visibility, leads, and business growth.</span>
+                </div>
+              </div>
+
+              <div class="service-strip">
+                <div class="service-strip-label">Services worth mentioning</div>
+                <div class="service-tags">
+                  <span>Website design</span>
+                  <span>Custom software</span>
+                  <span>Mobile apps</span>
+                  <span>Cloud & DevOps</span>
+                  <span>Marketing</span>
+                  <span>SEO</span>
+                </div>
+              </div>
+
+              <div class="mini-qr">
+                <div class="qr-block">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fmatechnologies.pk" alt="MA Technologies QR code" />
+                </div>
+                <div class="qr-copy">
+                  <strong>Scan to open MA Technologies</strong>
+                  <span>For the website, portfolio, and contact details.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div class="contact-label">Call</div>
+                <div class="contact-value">+92 326 4427035</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">+92 300 4427035</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-label">Website</div>
+                <div class="contact-value">matechnologies.pk</div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="divider">
+            <div class="transition-portal">
+              <div class="portal-soft"></div>
+              <div class="portal-door"></div>
+              <div class="portal-silhouette"></div>
+              <div class="portal-edge left-edge"></div>
+              <div class="portal-edge right-edge"></div>
+              <div class="portal-lens"></div>
+            </div>
+          </aside>
+
+          <section class="side right">
+            <div>
+              <div class="brand">
+                <div class="brand-mark">
+                  <img src="AftabAzizBuildersLogo.png" alt="Aftab Aziz Builders logo" />
+                </div>
+                <div>
+                  <h2 class="title">Aftab Aziz <span>Builders & Real Estate</span></h2>
+                  <p class="subtitle">Real estate, plots, property dealings, and construction services in Kotli with a calm, trusted presence.</p>
+                  <div class="catchphrase">From land to living, we help shape what comes next.</div>
+                </div>
+              </div>
+
+              <div class="meta-row">
+                <div class="pill">Real Estate</div>
+                <div class="pill">Property Deals</div>
+                <div class="pill">Builders</div>
+                <div class="pill">Construction</div>
+              </div>
+
+              <div class="info-box">
+                <div class="info-kicker">Office Address</div>
+                <h3 class="info-title">Near Gol Masjid, Housing Scheme</h3>
+                <p class="info-line">Aftab Aziz Builders, Kotli, Azad Kashmir</p>
+              </div>
+
+              <div class="service-grid">
+                <div class="service-card">
+                  <strong>Plots & Property</strong>
+                  <span>Buying, selling, and investment guidance.</span>
+                </div>
+                <div class="service-card">
+                  <strong>House Construction</strong>
+                  <span>Builder support and project execution.</span>
+                </div>
+                <div class="service-card">
+                  <strong>Builder Services</strong>
+                  <span>Site consultation and construction planning.</span>
+                </div>
+                <div class="service-card">
+                  <strong>Real Estate Support</strong>
+                  <span>Trusted local service for property needs.</span>
+                </div>
+              </div>
+
+              <div class="service-strip">
+                <div class="service-strip-label">Services worth mentioning</div>
+                <div class="service-tags">
+                  <span>Real estate</span>
+                  <span>Plots</span>
+                  <span>Property deals</span>
+                  <span>Builders</span>
+                  <span>Construction</span>
+                </div>
+              </div>
+
+              <div class="mini-qr">
+                <div class="qr-block">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fmatechnologies.pk" alt="Aftab Aziz Builders QR code" />
+                </div>
+                <div class="qr-copy">
+                  <strong>Scan to reach office info</strong>
+                  <span>Use later for website, WhatsApp, or map link.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div class="contact-label">Call</div>
+                <div class="contact-value">+92 300 1234567</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-label">Office</div>
+                <div class="contact-value">Near Gol Masjid, Housing Scheme</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-label">Focus</div>
+                <div class="contact-value">Real estate and construction services</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="building-silhouette" aria-hidden="true">
+          <svg viewBox="0 0 1920 320" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="leftGlow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.14" />
+                <stop offset="100%" stop-color="#14b8a6" stop-opacity="0.02" />
+              </linearGradient>
+              <linearGradient id="rightGlow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#3147b3" stop-opacity="0.06" />
+                <stop offset="100%" stop-color="#3147b3" stop-opacity="0.16" />
+              </linearGradient>
+            </defs>
+            <path d="M0,320 L0,220 L88,220 L88,150 L150,150 L150,242 L220,242 L220,110 L288,110 L288,180 L352,180 L352,92 L420,92 L420,232 L500,232 L500,142 L574,142 L574,196 L648,196 L648,126 L726,126 L726,244 L812,244 L812,156 L892,156 L892,212 L960,212 L960,320 Z" fill="url(#leftGlow)" />
+            <path d="M960,320 L960,138 L1030,138 L1030,202 L1094,202 L1094,100 L1162,100 L1162,170 L1224,170 L1224,82 L1304,82 L1304,220 L1372,220 L1372,146 L1438,146 L1438,202 L1512,202 L1512,114 L1584,114 L1584,240 L1660,240 L1660,160 L1736,160 L1736,212 L1808,212 L1808,132 L1868,132 L1868,188 L1920,188 L1920,320 Z" fill="url(#rightGlow)" />
+          </svg>
+        </div>
+
+      </section>
+    </div>
+  </body>
+</html>

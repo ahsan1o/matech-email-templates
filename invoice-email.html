@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - MA Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.5;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .invoice-badge {
+            display: inline-block;
+            background-color: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+        .invoice-ref {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .invoice-table {
+            width: 100%;
+            margin: 25px 0;
+            border-collapse: collapse;
+        }
+        .invoice-table thead {
+            background-color: #f1f5f9;
+            border-top: 2px solid #e2e8f0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .invoice-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .invoice-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+            color: #475569;
+        }
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        .amount-right {
+            text-align: right;
+        }
+        .subtotal-row td {
+            padding: 15px 12px;
+            font-weight: 600;
+            border-top: 2px solid #e2e8f0;
+        }
+        .total-row {
+            background-color: #f0fdfa;
+            border-top: 2px solid #0d9488;
+            border-bottom: 2px solid #0d9488;
+        }
+        .total-row td {
+            padding: 15px 12px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0d9488;
+        }
+        .due-section {
+            background-color: #fff7ed;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        .due-label {
+            font-size: 12px;
+            color: #92400e;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .due-date {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+        .payment-section {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .payment-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .payment-method {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        .payment-method:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0d9488;
+            font-weight: 600;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 14px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 20px 0;
+        }
+        .cta-button:hover {
+            background-color: #0f766e;
+        }
+        .footer {
+            background-color: #0f172a;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .footer-link {
+            color: #0d9488;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px 15px;
+            }
+            .greeting {
+                font-size: 18px;
+            }
+            .invoice-table th, .invoice-table td {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://matechnologies.pk/matechTemplate.png" alt="MA Tech" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="invoice-badge">Invoice</div>
+            <div class="greeting">Payment Due</div>
+            <div class="invoice-ref">Invoice #INV-2026-0042 | Due Date: April 10, 2026</div>
+
+            <p class="body-text">
+                Hi [Client Name],
+            </p>
+
+            <p class="body-text">
+                Thank you for choosing MA Tech! Here's the invoice for the work completed. We appreciate your business and look forward to our continued partnership.
+            </p>
+
+            <!-- Invoice Details -->
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th class="amount-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Website Development - Phase 1</td>
+                        <td class="amount-right">$7,500</td>
+                    </tr>
+                    <tr>
+                        <td>API Integration & Testing</td>
+                        <td class="amount-right">$2,000</td>
+                    </tr>
+                    <tr>
+                        <td>Deployment & Setup</td>
+                        <td class="amount-right">$800</td>
+                    </tr>
+                    <tr>
+                        <td>Post-Launch Support (30 days)</td>
+                        <td class="amount-right">$500</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td>Subtotal</td>
+                        <td class="amount-right">$10,800</td>
+                    </tr>
+                    <tr>
+                        <td>Tax (0%)</td>
+                        <td class="amount-right">$0</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total Due</td>
+                        <td class="amount-right">$10,800</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Due Date Warning -->
+            <div class="due-section">
+                <div class="due-label">Payment Due Date</div>
+                <div class="due-date">April 10, 2026</div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-section">
+                <div class="payment-title">Payment Methods</div>
+                <div class="payment-method">Bank Transfer: [Your Bank Details]</div>
+                <div class="payment-method">Credit Card: [Payment Link]</div>
+                <div class="payment-method">PayPal: hello@matechnologies.pk</div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#" class="cta-button">Pay Now</a>
+            </div>
+
+            <p class="body-text">
+                <strong>Invoice Details:</strong><br>
+                Invoice Number: INV-2026-0042<br>
+                Invoice Date: April 3, 2026<br>
+                Project: [Project Name]
+            </p>
+
+            <p class="body-text">
+                If you have any questions about this invoice or need an invoice receipt, please don't hesitate to contact us.
+            </p>
+
+            <p class="body-text">
+                Thank you!<br>
+                <strong>The MA Tech Team</strong>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin-bottom: 15px;">
+                <strong>MA Technologies</strong><br>
+                Building Tomorrow's Solutions, Today
+            </p>
+            <div>
+                <a href="https://matechnologies.pk" class="footer-link">Website</a>
+                <a href="mailto:sales@matechnologies.pk" class="footer-link">Sales</a>
+                <a href="https://www.linkedin.com/company/111473095/" class="footer-link">LinkedIn</a>
+                <a href="https://wa.me/923264427035" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="divider" style="background-color: #1e293b; margin: 15px 0;"></div>
+            <p>© 2026 MA Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
